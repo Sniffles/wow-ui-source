@@ -496,12 +496,12 @@ function ActionButton_OnEvent (self, event, ...)
 		ActionButton_Update(self);
 	elseif ( event == "SPELL_ACTIVATION_OVERLAY_GLOW_SHOW" ) then
 		local actionType, id, subType = GetActionInfo(self.action);
-		if ( actionType == "spell" and id == arg1 ) then
+		if ( actionType == "spell" and id == arg1 or actionType == "macro" and GetSpellInfo(arg1) == GetMacroSpell(id) ) then
 			ActionButton_ShowOverlayGlow(self);
 		end
 	elseif ( event == "SPELL_ACTIVATION_OVERLAY_GLOW_HIDE" ) then
 		local actionType, id, subType = GetActionInfo(self.action);
-		if ( actionType == "spell" and id == arg1 ) then
+		if ( actionType == "spell" and id == arg1 or actionType == "macro" and GetSpellInfo(arg1) == GetMacroSpell(id) ) then
 			ActionButton_HideOverlayGlow(self);
 		end
 	end
